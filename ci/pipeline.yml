@@ -25,7 +25,7 @@ jobs:
       - get: hello_hapi
         trigger: true
       - get: dependency-cache
-  - name: Run tests
+  - name: Run trial tests
     plan:
       - get: hello_hapi
         trigger: true
