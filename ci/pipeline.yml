@@ -10,7 +10,11 @@ resources:
   - name: hello_hapi
     type: git
     source: &repo-source
+<<<<<<< HEAD
       uri: https://github.com/kirananil007/hello_hapi.git
+=======
+      uri: https://github.com/kirananil007/hello_hapi
+>>>>>>> d47132ed59e71577a3a1c339544bfcfb8739c171
       branch: master
   - name: dependency-cache
     type: npm-cache
@@ -20,11 +24,16 @@ resources:
         - package.json
 
 jobs:
+<<<<<<< HEAD
   - name: Install dependency
+=======
+  - name: Install dependencies
+>>>>>>> d47132ed59e71577a3a1c339544bfcfb8739c171
     plan:
       - get: hello_hapi
         trigger: true
       - get: dependency-cache
+<<<<<<< HEAD
   - name: Run tests
     plan:
       - get: hello_hapi
@@ -32,5 +41,14 @@ jobs:
         passed: [Install dependency]
       - get: dependency-cache
         passed: [Install dependency]
+=======
+  - name: Run trial tests
+    plan:
+      - get: hello_hapi
+        trigger: true
+        passed: [Install dependencies]
+      - get: dependency-cache
+        passed: [Install dependencies]
+>>>>>>> d47132ed59e71577a3a1c339544bfcfb8739c171
       - task: run the test suite
         file: hello_hapi/ci/tasks/run_tests.yml
